@@ -1910,14 +1910,30 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppHeader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppHeader.vue */ "./resources/js/components/AppHeader.vue");
 /* harmony import */ var _AppMain_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppMain.vue */ "./resources/js/components/AppMain.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   data: function data() {
     return {
-      title: "Boolpress"
+      title: "Boolpress",
+      posts: null
     };
+  },
+  methods: {
+    fetchPosts: function fetchPosts() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://127.0.0.1:8000/api/posts").then(function (res) {
+        _this.posts = res.data;
+      });
+    }
+  },
+  created: function created() {
+    this.fetchPosts();
   },
   components: {
     AppHeader: _AppHeader_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -1960,6 +1976,9 @@ __webpack_require__.r(__webpack_exports__);
   name: "AppMain",
   components: {
     PostCard: _PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    posts: Array
   }
 });
 
@@ -1975,7 +1994,20 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PostCard"
+  name: "PostCard",
+  props: {
+    post: Object
+  },
+  computed: {
+    formattedDate: function formattedDate() {
+      var date = new Date(this.post.updated_at);
+      var day = date.getDate();
+      if (day < 10) day = "0" + day;
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return "".concat(day, "/").concat(month, "/").concat(year);
+    }
+  }
 });
 
 /***/ }),
@@ -2001,7 +2033,11 @@ var render = function render() {
     attrs: {
       title: _vm.title
     }
-  }), _vm._v(" "), _c("AppMain")], 1);
+  }), _vm._v(" "), _c("AppMain", {
+    attrs: {
+      posts: _vm.posts
+    }
+  })], 1);
 };
 
 var staticRenderFns = [];
@@ -2094,9 +2130,16 @@ var render = function render() {
     staticClass: "container py-5"
   }, [_c("div", {
     staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-4"
-  }, [_c("PostCard")], 1)])]);
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("div", {
+      key: post.id,
+      staticClass: "col-4"
+    }, [_c("PostCard", {
+      attrs: {
+        post: post
+      }
+    })], 1);
+  }), 0)]);
 };
 
 var staticRenderFns = [];
@@ -2120,33 +2163,31 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
-    staticClass: "card",
-    staticStyle: {
-      width: "18rem"
+    staticClass: "card mb-4"
+  }, [_c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: _vm.post.image,
+      alt: _vm.post.title
     }
-  }, [_c("div", {
+  }), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
     staticClass: "card-title"
-  }, [_vm._v("Card title")]), _vm._v(" "), _c("h6", {
+  }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("h6", {
     staticClass: "card-subtitle mb-2 text-muted"
-  }, [_vm._v("Card subtitle")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("\n            Scritto da " + _vm._s(_vm.post.user.name) + " il " + _vm._s(_vm.formattedDate) + "\n        ")]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
-  }, [_vm._v("\n            Some quick example text to build on the card title and make up\n            the bulk of the card's content.\n        ")]), _vm._v(" "), _c("a", {
+  }, [_vm._v("\n            " + _vm._s(_vm.post.content) + "\n        ")]), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary",
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Go somewhere")])])]);
-}];
+  }, [_vm._v("Leggi articolo")])])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 

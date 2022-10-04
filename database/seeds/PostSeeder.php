@@ -22,7 +22,7 @@ class PostSeeder extends Seeder
         $users_ids = User::pluck('id')->toArray();
         $tags_ids = Tag::pluck('id')->toArray();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $new_post = new Post();
             $new_post->title = $faker->text(50);
             $new_post->user_id = Arr::random($users_ids);
