@@ -20,7 +20,7 @@ export default {
     methods: {
         fetchPosts() {
             Axios.get("http://127.0.0.1:8000/api/posts").then((res) => {
-                this.posts = res.data;
+                this.posts = res.data.data;
             });
         },
     },

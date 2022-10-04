@@ -1928,7 +1928,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("http://127.0.0.1:8000/api/posts").then(function (res) {
-        _this.posts = res.data;
+        _this.posts = res.data.data;
       });
     }
   },
