@@ -2177,9 +2177,20 @@ var render = function render() {
     staticClass: "card-title"
   }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("h6", {
     staticClass: "card-subtitle mb-2 text-muted"
-  }, [_vm._v("\n            Scritto da " + _vm._s(_vm.post.user.name) + " il " + _vm._s(_vm.formattedDate) + "\n        ")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("\n            Scritto da " + _vm._s(_vm.post.user.name) + " il " + _vm._s(_vm.formattedDate) + "\n        ")]), _vm._v(" "), _c("div", [_vm._v("\n            Postato in\n            "), _c("span", {
+    staticClass: "badge badge-pill",
+    "class": "badge-".concat(_vm.post.category.color)
+  }, [_vm._v(_vm._s(_vm.post.category.label))])]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
-  }, [_vm._v("\n            " + _vm._s(_vm.post.content) + "\n        ")]), _vm._v(" "), _c("a", {
+  }, [_vm._v("\n            " + _vm._s(_vm.post.content) + "\n        ")]), _vm._v(" "), _c("div", {
+    staticClass: "mb-4"
+  }, _vm._l(_vm.post.tags, function (tag) {
+    return _c("span", {
+      key: tag.id,
+      staticClass: "badge badge-pill mr-2",
+      "class": "badge-".concat(tag.color)
+    }, [_vm._v(_vm._s(tag.label))]);
+  }), 0), _vm._v(" "), _c("a", {
     staticClass: "btn btn-primary",
     attrs: {
       href: "#"

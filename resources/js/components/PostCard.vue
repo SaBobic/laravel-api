@@ -6,9 +6,26 @@
             <h6 class="card-subtitle mb-2 text-muted">
                 Scritto da {{ post.user.name }} il {{ formattedDate }}
             </h6>
+            <div>
+                Postato in
+                <span
+                    class="badge badge-pill"
+                    :class="`badge-${post.category.color}`"
+                    >{{ post.category.label }}</span
+                >
+            </div>
             <p class="card-text">
                 {{ post.content }}
             </p>
+            <div class="mb-4">
+                <span
+                    v-for="tag in post.tags"
+                    :key="tag.id"
+                    class="badge badge-pill mr-2"
+                    :class="`badge-${tag.color}`"
+                    >{{ tag.label }}</span
+                >
+            </div>
             <a href="#" class="btn btn-primary">Leggi articolo</a>
         </div>
     </div>
