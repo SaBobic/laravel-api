@@ -1,13 +1,13 @@
 <template>
     <div class="content">
         <AppHeader :title="title" />
-        <AppMain :posts="posts" />
+        <HomePage :posts="posts" />
     </div>
 </template>
 
 <script>
 import AppHeader from "./AppHeader.vue";
-import AppMain from "./AppMain.vue";
+import HomePage from "./pages/HomePage.vue";
 import Axios from "axios";
 export default {
     name: "App",
@@ -27,6 +27,6 @@ export default {
     created() {
         this.fetchPosts();
     },
-    components: { AppHeader, AppMain },
+    components: { AppHeader, HomePage },
 };
 </script>
