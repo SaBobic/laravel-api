@@ -9,6 +9,7 @@ import HomePage from "./components/pages/HomePage.vue";
 import AboutPage from "./components/pages/AboutPage.vue";
 import ContactsPage from "./components/pages/ContactsPage.vue";
 import NotFoundPage from "./components/pages/NotFoundPage.vue";
+import PostPage from "./components/pages/PostPage.vue";
 
 // Vue usa VueRouter
 
@@ -34,6 +35,11 @@ const routes = new VueRouter({
             path: "/contacts",
             component: ContactsPage,
             name: "contacts",
+        },
+        {
+            path: "/posts/:slug",
+            component: PostPage,
+            name: "post-single",
         },
         {
             path: "*",

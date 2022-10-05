@@ -26,7 +26,11 @@
                     >{{ tag.label }}</span
                 >
             </div>
-            <a href="#" class="btn btn-primary">Leggi articolo</a>
+            <router-link
+                :to="{ name: 'post-single', params: { slug: post.slug } }"
+                class="btn btn-primary"
+                >Leggi articolo</router-link
+            >
         </div>
     </div>
 </template>
