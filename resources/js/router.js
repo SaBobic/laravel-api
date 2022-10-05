@@ -22,14 +22,17 @@ const routes = new VueRouter({
         {
             path: "/",
             component: HomePage,
+            name: "home",
         },
         {
             path: "/about",
             component: AboutPage,
+            name: "about",
         },
         {
             path: "/contacts",
             component: ContactsPage,
+            name: "contacts",
         },
         {
             path: "*",

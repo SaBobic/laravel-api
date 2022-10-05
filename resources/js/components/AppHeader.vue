@@ -1,6 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">{{ title }}</a>
+        <router-link class="navbar-brand" :to="{ name: 'home' }">{{
+            title
+        }}</router-link>
         <button
             class="navbar-toggler"
             type="button"
@@ -14,7 +16,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="#">Home</a>
+                <router-link class="nav-link" :to="{ name: 'home' }"
+                    >Home</router-link
+                >
+            </div>
+            <div class="navbar-nav">
+                <router-link class="nav-link" :to="{ name: 'about' }"
+                    >About</router-link
+                >
+            </div>
+            <div class="navbar-nav">
+                <router-link class="nav-link" :to="{ name: 'contacts' }"
+                    >Contacts</router-link
+                >
             </div>
         </div>
     </nav>
