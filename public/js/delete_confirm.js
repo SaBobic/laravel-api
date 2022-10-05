@@ -111,7 +111,7 @@ forms.forEach(function (form) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\fabri\Desktop\laravel-api\resources\js\delete_confirm.js */"./resources/js/delete_confirm.js");
+module.exports = __webpack_require__(/*! C:\Laravel\laravel-api\resources\js\delete_confirm.js */"./resources/js/delete_confirm.js");
 
 
 /***/ })
